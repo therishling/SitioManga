@@ -9,4 +9,4 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 # Create your views here.
 class Dashboard(TemplateView):
-    template_name = 'dashboard/base/base.html'
+    template_name = 'dashboard/index.html'

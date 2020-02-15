@@ -66,3 +66,23 @@ class Admin(AbstractBaseUser):
     
     def __str__(self):
         return self.usuario
+
+
+#MODELOS MANGA
+class Categoria(models.Model):
+    descripcion = models.CharField(max_length=100)
+
+class Manga(models.Model):
+    nombre = models.CharField(max_length=100)
+    categoria = models.ForeignKey(Categoria, null=True, blank=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nombre_producto
+
+class Capitulo(models.Model):
+    numero = models.IntegerField()
+    manga = models.ForeignKey(Manga, null=True, blank=True, on_delete=models.CASCADE)
+
+class ImagenesCapitulo(models.Model):
+    capitulo = models.ManyToManyField(Capitulo, blank = True)
+    images = models.ImageField(upload_to='manga') 
